@@ -36,22 +36,28 @@ except ImportError:
 
 # The 16 Pakistani politicians to classify
 POLITICIANS = {
-    "imran_khan": ["Imran Khan Pakistan politician", "Imran Khan PTI leader", "Imran Khan Prime Minister Pakistan"],
-    "nawaz_sharif": ["Nawaz Sharif Pakistan politician", "Nawaz Sharif PML-N leader", "Nawaz Sharif Prime Minister"],
-    "shehbaz_sharif": ["Shehbaz Sharif Pakistan politician", "Shehbaz Sharif Prime Minister Pakistan", "Shahbaz Sharif PML-N"],
-    "asif_ali_zardari": ["Asif Ali Zardari Pakistan politician", "Asif Ali Zardari President Pakistan", "Asif Zardari PPP"],
-    "bilawal_bhutto": ["Bilawal Bhutto Zardari politician", "Bilawal Bhutto PPP chairman", "Bilawal Bhutto Pakistan"],
-    "maryam_nawaz": ["Maryam Nawaz Pakistan politician", "Maryam Nawaz PML-N", "Maryam Nawaz Chief Minister Punjab"],
-    "fazlur_rehman": ["Fazlur Rehman Pakistan politician", "Maulana Fazlur Rehman JUI-F", "Fazlur Rehman PDM"],
-    "pervez_musharraf": ["Pervez Musharraf Pakistan", "Pervez Musharraf President Pakistan", "General Musharraf Pakistan"],
-    "chaudhry_nisar": ["Chaudhry Nisar Ali Khan politician", "Chaudhry Nisar Pakistan PML-N", "Chaudhry Nisar Interior Minister"],
-    "aitzaz_ahsan": ["Aitzaz Ahsan Pakistan politician", "Aitzaz Ahsan PPP lawyer", "Aitzaz Ahsan Senator Pakistan"],
-    "sheikh_rasheed": ["Sheikh Rasheed Ahmed politician", "Sheikh Rasheed Interior Minister Pakistan", "Sheikh Rasheed Rawalpindi"],
-    "murad_ali_shah": ["Murad Ali Shah Sindh Chief Minister", "Murad Ali Shah PPP politician", "Murad Ali Shah Pakistan"],
-    "sanaullah_zehri": ["Sanaullah Zehri Balochistan politician", "Sanaullah Zehri Chief Minister", "Sanaullah Zehri Pakistan"],
-    "rana_sanaullah": ["Rana Sanaullah Pakistan politician", "Rana Sanaullah PML-N Interior Minister", "Rana Sanaullah Punjab"],
-    "khurshid_shah": ["Khurshid Shah Pakistan politician", "Syed Khurshid Shah PPP", "Khurshid Shah opposition leader"],
-    "ahmed_sharif_chaudhry": ["Ahmed Sharif Chaudhry ISPR", "Ahmed Sharif Chaudhry military spokesperson Pakistan", "DG ISPR Ahmed Sharif Chaudhry"],
+    "imran_khan": ["imran khan"],
+    "nawaz_sharif": ["nawaz sharif"],
+    "maryam_nawaz": ["maryam nawaz"],
+    "maryam_nawaz_sharif": ["maryam nawaz sharif"],
+    "shehbaz_sharif": ["shehbaz sharif"],
+    "bilawal_bhutto_zardari": ["bilawal bhutto zardari"],
+    "benazir_bhutto": ["benazir bhutto"],
+    "asif_ali_zardari": ["asif ali zardari"],
+    "altaf_hussain": ["altaf hussain"],
+    "fazlur_rehman": ["fazlur rehman"],
+    "pervez_musharraf": ["pervez musharraf"],
+    "chaudhry_shujaat_hussain": ["chaudhry shujaat hussain"],
+    "mohsin_naqvi": ["mohsin naqvi"],
+    "mohsin_dawar": ["mohsin dawar"],
+    "siraj_ul_haq": ["siraj ul haq"],
+    "mustafa_kamal": ["mustafa kamal"],
+    "asif_ghafoor": ["asif ghafoor"],
+    "ahmed_sharif_chaudhry": ["ahmed sharif chaudhry"],
+    "ahsan_iqbal": ["ahsan iqbal"],
+    "hamza_shehbaz": ["hamza shehbaz"],
+    "murad_ali_shah": ["murad ali shah"],
+    "yousaf_raza_gillani": ["yousaf raza gillani"]
 }
 
 # Directory paths
@@ -69,7 +75,7 @@ MIN_IMAGE_SIZE = (50, 50)  # Minimum acceptable image dimensions
 TARGET_IMAGES_PER_CLASS = 300  # Target number of images to download
 
 # Training settings
-NUM_CLASSES = 16
+NUM_CLASSES = 22
 BATCH_SIZE = 32
 NUM_EPOCHS = 30
 LEARNING_RATE = 0.0001
