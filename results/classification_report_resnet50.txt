@@ -1,0 +1,31 @@
+Model: resnet50
+Overall Accuracy: 0.8732
+
+                          precision    recall  f1-score   support
+
+   Ahmed Sharif Chaudhry       0.33      0.20      0.25         5
+             Ahsan Iqbal       0.75      0.86      0.80         7
+           Altaf Hussain       1.00      1.00      1.00         4
+        Asif Ali Zardari       1.00      0.64      0.78        11
+            Asif Ghafoor       0.75      1.00      0.86         3
+          Benazir Bhutto       0.69      0.90      0.78        10
+  Bilawal Bhutto Zardari       0.95      1.00      0.97        19
+Chaudhry Shujaat Hussain       1.00      0.67      0.80         3
+           Fazlur Rehman       1.00      1.00      1.00         1
+           Hamza Shehbaz       0.50      0.33      0.40         6
+              Imran Khan       0.91      0.94      0.92        31
+            Maryam Nawaz       0.92      1.00      0.96        23
+     Maryam Nawaz Sharif       0.88      1.00      0.93         7
+            Mohsin Dawar       1.00      1.00      1.00         3
+            Mohsin Naqvi       0.80      1.00      0.89         4
+          Murad Ali Shah       0.50      0.25      0.33         4
+           Mustafa Kamal       1.00      0.75      0.86         4
+            Nawaz Sharif       0.91      0.94      0.93        33
+        Pervez Musharraf       1.00      0.50      0.67         2
+          Shehbaz Sharif       0.87      0.96      0.91        27
+            Siraj Ul Haq       1.00      0.50      0.67         2
+     Yousaf Raza Gillani       1.00      0.75      0.86         4
+
+                accuracy                           0.87       213
+               macro avg       0.85      0.78      0.80       213
+            weighted avg       0.87      0.87      0.86       213
