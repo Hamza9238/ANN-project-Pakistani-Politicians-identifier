@@ -15,7 +15,7 @@ if __name__ == "__main__":
     logger.info("# TRAINING EfficientNet-B2")
     logger.info("#" * 70)
 
-    result = train_model("efficientnet_b2", train_loader, val_loader)
+    result = train_model("efficientnet_b2", train_loader, val_loader, num_classes=len(class_names))
 
     logger.info(f"\nBest Val Acc: {result['best_val_acc']:.4f} at epoch {result['best_epoch']}")
     logger.info(f"Model saved to: {result['checkpoint_path']}")

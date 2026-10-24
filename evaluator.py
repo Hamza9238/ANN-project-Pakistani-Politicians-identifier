@@ -235,7 +235,7 @@ def evaluate_model(model_name, test_loader, class_names, device=None):
         logger.error(f"No checkpoint found at {checkpoint_path}")
         return None
 
-    model = get_model(model_name, num_classes=NUM_CLASSES, pretrained=False)
+    model = get_model(model_name, num_classes=len(class_names), pretrained=False)
     checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     model = model.to(device)

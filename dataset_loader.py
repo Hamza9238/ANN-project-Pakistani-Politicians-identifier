@@ -116,14 +116,20 @@ class PoliticianDataset(Dataset):
         self.root_dir = Path(root_dir)
         self.transform = transform
         self.samples = []  # List of (image_path, class_index)
-        self.class_names = sorted([
-            d.name for d in self.root_dir.iterdir()
-            if d.is_dir()
-        ])
+        extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.webp'}
+
+        # Only include subdirectories that contain valid images
+        self.class_names = []
+        if self.root_dir.exists():
+            for d in sorted(self.root_dir.iterdir()):
+                if d.is_dir():
+                    imgs = [f for f in d.iterdir() if f.suffix.lower() in extensions]
+                    if len(imgs) > 0:
+                        self.class_names.append(d.name)
+
         self.class_to_idx = {name: idx for idx, name in enumerate(self.class_names)}
 
         # Collect all image samples
-        extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.webp'}
         for class_name in self.class_names:
             class_dir = self.root_dir / class_name
             for img_path in sorted(class_dir.iterdir()):

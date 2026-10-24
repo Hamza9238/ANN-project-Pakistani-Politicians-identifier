@@ -11,26 +11,32 @@ This project implements an end-to-end image classification system that:
 4. **Trains two CNN models**: ResNet-50 and EfficientNet-B2 with transfer learning
 5. **Evaluates thoroughly** with confusion matrices, training curves, classification reports, and misclassified sample analysis
 
-## 👤 The 16 Politicians
+## 👤 The 22 Politicians
 
 | # | Name | Class Label |
 |---|------|-------------|
-| 1 | Imran Khan | `imran_khan` |
-| 2 | Nawaz Sharif | `nawaz_sharif` |
-| 3 | Shehbaz Sharif | `shehbaz_sharif` |
+| 1 | Ahmed Sharif Chaudhry | `ahmed_sharif_chaudhry` |
+| 2 | Ahsan Iqbal | `ahsan_iqbal` |
+| 3 | Altaf Hussain | `altaf_hussain` |
 | 4 | Asif Ali Zardari | `asif_ali_zardari` |
-| 5 | Bilawal Bhutto | `bilawal_bhutto` |
-| 6 | Maryam Nawaz | `maryam_nawaz` |
-| 7 | Fazlur Rehman | `fazlur_rehman` |
-| 8 | Pervez Musharraf | `pervez_musharraf` |
-| 9 | Chaudhry Nisar | `chaudhry_nisar` |
-| 10 | Aitzaz Ahsan | `aitzaz_ahsan` |
-| 11 | Sheikh Rasheed | `sheikh_rasheed` |
-| 12 | Murad Ali Shah | `murad_ali_shah` |
-| 13 | Sanaullah Zehri | `sanaullah_zehri` |
-| 14 | Rana Sanaullah | `rana_sanaullah` |
-| 15 | Khurshid Shah | `khurshid_shah` |
-| 16 | Ahmed Sharif Chaudhry (DG ISPR) | `ahmed_sharif_chaudhry` |
+| 5 | Asif Ghafoor | `asif_ghafoor` |
+| 6 | Benazir Bhutto | `benazir_bhutto` |
+| 7 | Bilawal Bhutto Zardari | `bilawal_bhutto_zardari` |
+| 8 | Chaudhry Shujaat Hussain | `chaudhry_shujaat_hussain` |
+| 9 | Fazlur Rehman | `fazlur_rehman` |
+| 10 | Hamza Shehbaz | `hamza_shehbaz` |
+| 11 | Imran Khan | `imran_khan` |
+| 12 | Maryam Nawaz | `maryam_nawaz` |
+| 13 | Maryam Nawaz Sharif | `maryam_nawaz_sharif` |
+| 14 | Mohsin Dawar | `mohsin_dawar` |
+| 15 | Mohsin Naqvi | `mohsin_naqvi` |
+| 16 | Murad Ali Shah | `murad_ali_shah` |
+| 17 | Mustafa Kamal | `mustafa_kamal` |
+| 18 | Nawaz Sharif | `nawaz_sharif` |
+| 19 | Pervez Musharraf | `pervez_musharraf` |
+| 20 | Shehbaz Sharif | `shehbaz_sharif` |
+| 21 | Siraj ul Haq | `siraj_ul_haq` |
+| 22 | Yousaf Raza Gillani | `yousaf_raza_gillani` |
 
 ## 🏗️ Project Structure
 

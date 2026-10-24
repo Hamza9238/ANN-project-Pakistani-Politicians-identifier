@@ -94,10 +94,9 @@ def split_dataset(seed: int = 42):
     logger.info("SPLITTING DATASET INTO TRAIN/VAL/TEST (75/15/10)")
     logger.info("=" * 70)
 
-    # Create split directories
+    # Create base split directories
     for split in ["train", "val", "test"]:
-        for politician in POLITICIANS:
-            (DATASET_DIR / split / politician).mkdir(parents=True, exist_ok=True)
+        (DATASET_DIR / split).mkdir(parents=True, exist_ok=True)
 
     # Track statistics
     stats = {
@@ -134,6 +133,7 @@ def split_dataset(seed: int = 42):
             (test_imgs, "test")
         ]:
             dest_dir = DATASET_DIR / split_name / politician
+            dest_dir.mkdir(parents=True, exist_ok=True)
             for idx, img_path in enumerate(img_list):
                 dest_path = dest_dir / f"{politician}_{split_name}_{idx:04d}{img_path.suffix}"
                 shutil.copy2(str(img_path), str(dest_path))

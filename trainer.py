@@ -114,7 +114,8 @@ def train_model(
     num_epochs: int = NUM_EPOCHS,
     learning_rate: float = LEARNING_RATE,
     device: Optional[str] = None,
-    patience: int = 7
+    patience: int = 7,
+    num_classes: Optional[int] = None
 ) -> Dict:
     """
     Train a single model end-to-end.
@@ -124,13 +125,19 @@ def train_model(
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
+    if num_classes is None:
+        if hasattr(train_loader.dataset, 'class_names'):
+            num_classes = len(train_loader.dataset.class_names)
+        else:
+            num_classes = NUM_CLASSES
+
     logger.info("=" * 70)
-    logger.info(f"TRAINING {model_name.upper()}")
+    logger.info(f"TRAINING {model_name.upper()} ({num_classes} classes)")
     logger.info(f"Device: {device}, Epochs: {num_epochs}, LR: {learning_rate}")
     logger.info("=" * 70)
 
     # Create model
-    model = get_model(model_name, num_classes=NUM_CLASSES, pretrained=True)
+    model = get_model(model_name, num_classes=num_classes, pretrained=True)
     model = model.to(device)
 
     # Loss, optimizer, scheduler
@@ -214,13 +221,13 @@ def train_model(
     }
 
 
-def train_with_retry(model_name, train_loader, val_loader, target_acc=0.90):
+def train_with_retry(model_name, train_loader, val_loader, target_acc=0.90, num_classes=None):
     """
     Train model with automatic retry if accuracy < target.
     Retries with lower LR and more unfrozen layers.
     """
     # First attempt with default settings
-    result = train_model(model_name, train_loader, val_loader)
+    result = train_model(model_name, train_loader, val_loader, num_classes=num_classes)
 
     if result["best_val_acc"] < target_acc:
         logger.info(f"\n{'='*70}")
@@ -231,7 +238,8 @@ def train_with_retry(model_name, train_loader, val_loader, target_acc=0.90):
             model_name, train_loader, val_loader,
             num_epochs=NUM_EPOCHS + 10,
             learning_rate=LEARNING_RATE / 2,
-            patience=10
+            patience=10,
+            num_classes=num_classes
         )
 
     if result["best_val_acc"] < target_acc:
@@ -240,7 +248,8 @@ def train_with_retry(model_name, train_loader, val_loader, target_acc=0.90):
             model_name, train_loader, val_loader,
             num_epochs=NUM_EPOCHS + 20,
             learning_rate=LEARNING_RATE / 5,
-            patience=12
+            patience=12,
+            num_classes=num_classes
         )
 
     return result
@@ -252,6 +261,7 @@ def train_all_models():
 
     # Get data loaders
     train_loader, val_loader, test_loader, class_names = get_data_loaders()
+    num_classes = len(class_names)
 
     results = {}
 
@@ -259,13 +269,13 @@ def train_all_models():
     logger.info("\n" + "#" * 70)
     logger.info("# MODEL 1: ResNet-50")
     logger.info("#" * 70)
-    results["resnet50"] = train_with_retry("resnet50", train_loader, val_loader)
+    results["resnet50"] = train_with_retry("resnet50", train_loader, val_loader, num_classes=num_classes)
 
     # Train EfficientNet-B2
     logger.info("\n" + "#" * 70)
     logger.info("# MODEL 2: EfficientNet-B2")
     logger.info("#" * 70)
-    results["efficientnet_b2"] = train_with_retry("efficientnet_b2", train_loader, val_loader)
+    results["efficientnet_b2"] = train_with_retry("efficientnet_b2", train_loader, val_loader, num_classes=num_classes)
 
     # Summary
     logger.info("\n" + "=" * 70)

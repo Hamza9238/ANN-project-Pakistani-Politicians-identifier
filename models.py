@@ -59,11 +59,18 @@ class EfficientNetB2Classifier(nn.Module):
 
     def __init__(self, num_classes=NUM_CLASSES, pretrained=True):
         super().__init__()
+        loaded_timm = False
         if TIMM_AVAILABLE:
-            self.backbone = timm.create_model("efficientnet_b2", pretrained=pretrained, num_classes=0)
-            num_features = self.backbone.num_features
-            logger.info(f"EfficientNet-B2 from timm (features={num_features})")
-        else:
+            try:
+                self.backbone = timm.create_model("efficientnet_b2", pretrained=pretrained, num_classes=0)
+                num_features = self.backbone.num_features
+                logger.info(f"EfficientNet-B2 from timm (features={num_features})")
+                loaded_timm = True
+            except Exception as e:
+                logger.warning(f"timm loading failed ({e}); falling back to torchvision")
+                loaded_timm = False
+
+        if not loaded_timm:
             if pretrained:
                 self.backbone = tv_models.efficientnet_b2(weights=tv_models.EfficientNet_B2_Weights.IMAGENET1K_V1)
             else:
@@ -88,8 +95,10 @@ class EfficientNetB2Classifier(nn.Module):
         return self.classifier(features)
 
 
-def get_model(model_name, num_classes=NUM_CLASSES, pretrained=True):
+def get_model(model_name, num_classes=None, pretrained=True):
     """Factory function to create a model by name."""
+    if num_classes is None:
+        num_classes = NUM_CLASSES
     name = model_name.lower().replace("-", "_")
     if name == "resnet50":
         return ResNet50Classifier(num_classes, pretrained)
@@ -99,10 +108,10 @@ def get_model(model_name, num_classes=NUM_CLASSES, pretrained=True):
         raise ValueError(f"Unknown model: {model_name}. Choose: resnet50, efficientnet_b2")
 
 
-def get_resnet50(num_classes=NUM_CLASSES, pretrained=True):
+def get_resnet50(num_classes=None, pretrained=True):
     return get_model("resnet50", num_classes, pretrained)
 
-def get_efficientnet_b2(num_classes=NUM_CLASSES, pretrained=True):
+def get_efficientnet_b2(num_classes=None, pretrained=True):
     return get_model("efficientnet_b2", num_classes, pretrained)
 
 

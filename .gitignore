@@ -1,10 +1,22 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Accidental nested clone of the same repo — do not commit submodule-style copy
-ANN-project-Pakistani-Politicians-identifier/
+# PyTorch Checkpoint weights (large binary files >100MB rejected by GitHub)
+checkpoints/*.pth
+checkpoints/*.pt
 
-# Checkpoints: single .pth files can exceed GitHub 100MB/file — use Git LFS or Releases if needed
-checkpoints/
+# Pipeline logs
+pipeline.log
+*.log
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Editor files
+.vscode/
+.idea/
